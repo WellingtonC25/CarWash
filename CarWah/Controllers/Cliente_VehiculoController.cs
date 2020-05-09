@@ -12,6 +12,9 @@ namespace CarWah.Controllers
 {
     public class Cliente_VehiculoController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private CarWashEntities db = new CarWashEntities();
 
         // GET: Cliente_Vehiculo
