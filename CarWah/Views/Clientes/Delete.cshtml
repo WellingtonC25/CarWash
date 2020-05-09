@@ -1,0 +1,149 @@
+﻿@model CarWah.Models.Cliente
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/nodernizr")
+@Scripts.Render("~/bundles/bootstrap")
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/util.css" rel="stylesheet" />
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Elite CarWash</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Clientes", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Clientes", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehiculos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Vehiculoes", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Vehiculoes", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Asignar Vehiculo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Cliente_Vehiculo", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Cliente_Vehiculo", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Marca <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Marcas", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Marcas", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Modelo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Modelos", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Modelos", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Tipo de Vehiculo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "TipoVehiculos", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "TipoVehiculos", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Salir", "Login", "Empleados", new { area = "" }, new { @class = "glyphicon glyphicon-log-out" })</li>
+        </ul>
+        <button class="btn btn-success navbar-btn">@Html.ActionLink("Crear Factura", "Create", "Facturas")</button>
+    </div>
+</nav>
+
+<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+    <h2>Borrar</h2>
+
+    <h3>Estas seguro de elimiar este articulo?</h3>
+
+    <div>
+        <h4>Cliente</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Apellidos)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cedula)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Contacto)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

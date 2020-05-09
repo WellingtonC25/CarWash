@@ -1,0 +1,50 @@
+﻿@model CarWah.Models.Vehiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Placa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoVehiculo.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoVehiculo.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

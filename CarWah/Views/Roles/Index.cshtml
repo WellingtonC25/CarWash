@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+
+@model IEnumerable<CarWah.Models.Role>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/css");
+@Scripts.Render("~/bundles/nodernizr")
+@Scripts.Render("~/bundles/bootstrap")
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Elite CarWash</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Empleados <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Empleados", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Empleados", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Roles <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Roles", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Roles", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Asignar Role <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Empleado_Roles", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Empleado_Roles", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Salir", "Login", "Empleados", new { area = "" }, new { @class = "glyphicon glyphicon-log-out" })</li>
+        </ul>
+    </div>
+</nav>
+
+
+<h2>Listado de Roles</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", "Roles", new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.Codigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Codigo }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

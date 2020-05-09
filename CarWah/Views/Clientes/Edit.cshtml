@@ -1,0 +1,147 @@
+﻿@model CarWah.Models.Cliente
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/Moving.css" rel="stylesheet" type="text/css" />
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Elite CarWash</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Clientes", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Clientes", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehiculos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Vehiculoes", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Vehiculoes", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Asignar Vehiculo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Cliente_Vehiculo", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Cliente_Vehiculo", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Marca <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Marcas", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Marcas", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Modelo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "Modelos", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "Modelos", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Crear Tipo de Vehiculo <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Crear", "Create", "TipoVehiculos", new { area = "" }, new { @class = "glyphicon glyphicon-plus" })</li>
+                    <li>@Html.ActionLink("Lista", "Index", "TipoVehiculos", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Salir", "Login", "Empleados", new { area = "" }, new { @class = "glyphicon glyphicon-log-out" })</li>
+        </ul>
+        <button class="btn btn-success navbar-btn">@Html.ActionLink("Crear Factura", "Create", "Facturas")</button>
+    </div>
+</nav>
+
+<div  class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Cliente</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Codigo)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contacto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Contacto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contacto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Cliente")
+    </div>
+</div>
