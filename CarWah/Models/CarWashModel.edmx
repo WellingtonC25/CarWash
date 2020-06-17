@@ -4,359 +4,354 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CarWashModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="30" />
-          <Property Name="Apellidos" Type="varchar" MaxLength="30" />
-          <Property Name="Cedula" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="Direccion" Type="varchar" MaxLength="200" />
-          <Property Name="Contacto" Type="varchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="Cliente_Vehiculo">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClienteId" Type="int" Nullable="false" />
-          <Property Name="VehiculoId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Empleado">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="30" />
-          <Property Name="Apellidos" Type="varchar" MaxLength="30" />
-          <Property Name="Cedula" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="Direccion" Type="varchar" MaxLength="200" />
-          <Property Name="Contacto" Type="varchar" MaxLength="10" />
-          <Property Name="Usuario" Type="nchar" MaxLength="100" />
-          <Property Name="Contraseña" Type="varchar" MaxLength="1000" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Empleado_Roles">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpleadoId" Type="int" Nullable="false" />
-          <Property Name="RoleId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Factura">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClienteId" Type="int" />
-          <Property Name="EmpleadoId" Type="int" />
-        </EntityType>
-        <EntityType Name="FacturaDetails">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VehiculoId" Type="int" />
-          <Property Name="Descuento" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Lavado" Type="int" Nullable="false" />
-          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Cantidad" Type="int" />
-          <Property Name="ITBIS" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="Marca">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="Modelo">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="25" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="TipoLavado">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion Lavado" Type="varchar" MaxLength="15" />
-          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="TipoVehiculo">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="Vehiculo">
-          <Key>
-            <PropertyRef Name="Codigo" />
-          </Key>
-          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ModeloId" Type="int" Nullable="false" />
-          <Property Name="MarcaId" Type="int" Nullable="false" />
-          <Property Name="Placa" Type="varchar" MaxLength="7" />
-          <Property Name="Tipo de Vehiculo" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Cliente_Vehiculo_Cliente">
-          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Cliente_Vehiculo" Type="Self.Cliente_Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Cliente_Vehiculo">
-              <PropertyRef Name="ClienteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cliente_Vehiculo_Vehiculo">
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Cliente_Vehiculo" Type="Self.Cliente_Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vehiculo">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Cliente_Vehiculo">
-              <PropertyRef Name="VehiculoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Empleado_Roles_Empleado">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Empleado_Roles" Type="Self.Empleado_Roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Empleado_Roles">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Empleado_Roles_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Empleado_Roles" Type="Self.Empleado_Roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Empleado_Roles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Factura_Cliente">
-          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Factura">
-              <PropertyRef Name="ClienteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Factura_Empleado">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Factura">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FacturaDetails_Factura">
-          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
-          <End Role="FacturaDetails" Type="Self.FacturaDetails" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Factura">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="FacturaDetails">
-              <PropertyRef Name="Codigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FacturaDetails_TipoLavado">
-          <End Role="TipoLavado" Type="Self.TipoLavado" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="FacturaDetails" Type="Self.FacturaDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoLavado">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="FacturaDetails">
-              <PropertyRef Name="Lavado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FacturaDetails_Vehiculo">
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="FacturaDetails" Type="Self.FacturaDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vehiculo">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="FacturaDetails">
-              <PropertyRef Name="VehiculoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehiculo_Marca">
-          <End Role="Marca" Type="Self.Marca" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Marca">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Vehiculo">
-              <PropertyRef Name="MarcaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehiculo_Modelo">
-          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modelo">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Vehiculo">
-              <PropertyRef Name="ModeloId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehiculo_TipoVehiculo">
-          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoVehiculo">
-              <PropertyRef Name="Codigo" />
-            </Principal>
-            <Dependent Role="Vehiculo">
-              <PropertyRef Name="Tipo de Vehiculo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="UserInRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="user" Type="nchar" Mode="In" />
-          <Parameter Name="password" Type="varchar" Mode="In" />
-        </Function>
-        <EntityContainer Name="CarWashModelStoreContainer">
-          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cliente_Vehiculo" EntityType="Self.Cliente_Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Empleado_Roles" EntityType="Self.Empleado_Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FacturaDetails" EntityType="Self.FacturaDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoLavado" EntityType="Self.TipoLavado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Cliente_Vehiculo_Cliente" Association="Self.FK_Cliente_Vehiculo_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Cliente_Vehiculo" EntitySet="Cliente_Vehiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cliente_Vehiculo_Vehiculo" Association="Self.FK_Cliente_Vehiculo_Vehiculo">
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-            <End Role="Cliente_Vehiculo" EntitySet="Cliente_Vehiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Empleado_Roles_Empleado" Association="Self.FK_Empleado_Roles_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Empleado_Roles" EntitySet="Empleado_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Empleado_Roles_Role" Association="Self.FK_Empleado_Roles_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Empleado_Roles" EntitySet="Empleado_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Factura" EntitySet="Factura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Factura_Empleado" Association="Self.FK_Factura_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Factura" EntitySet="Factura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FacturaDetails_Factura" Association="Self.FK_FacturaDetails_Factura">
-            <End Role="Factura" EntitySet="Factura" />
-            <End Role="FacturaDetails" EntitySet="FacturaDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FacturaDetails_TipoLavado" Association="Self.FK_FacturaDetails_TipoLavado">
-            <End Role="TipoLavado" EntitySet="TipoLavado" />
-            <End Role="FacturaDetails" EntitySet="FacturaDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FacturaDetails_Vehiculo" Association="Self.FK_FacturaDetails_Vehiculo">
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-            <End Role="FacturaDetails" EntitySet="FacturaDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehiculo_Marca" Association="Self.FK_Vehiculo_Marca">
-            <End Role="Marca" EntitySet="Marca" />
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehiculo_Modelo" Association="Self.FK_Vehiculo_Modelo">
-            <End Role="Modelo" EntitySet="Modelo" />
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehiculo_TipoVehiculo" Association="Self.FK_Vehiculo_TipoVehiculo">
-            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="CarWashModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CarWashModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="CarWashModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cliente_Vehiculo" EntityType="CarWashModel.Store.Cliente_Vehiculo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleado" EntityType="CarWashModel.Store.Empleado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleado_Roles" EntityType="CarWashModel.Store.Empleado_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Factura" EntityType="CarWashModel.Store.Factura" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacturaDetails" EntityType="CarWashModel.Store.FacturaDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Marca" EntityType="CarWashModel.Store.Marca" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Modelo" EntityType="CarWashModel.Store.Modelo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="CarWashModel.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="CarWashModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoLavado" EntityType="CarWashModel.Store.TipoLavado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoVehiculo" EntityType="CarWashModel.Store.TipoVehiculo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vehiculo" EntityType="CarWashModel.Store.Vehiculo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Cliente_Vehiculo_Cliente" Association="CarWashModel.Store.FK_Cliente_Vehiculo_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Cliente_Vehiculo" EntitySet="Cliente_Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Cliente" Association="CarWashModel.Store.FK_Factura_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Vehiculo_Vehiculo" Association="CarWashModel.Store.FK_Cliente_Vehiculo_Vehiculo">
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+      <End Role="Cliente_Vehiculo" EntitySet="Cliente_Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Roles_Empleado" Association="CarWashModel.Store.FK_Empleado_Roles_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Empleado_Roles" EntitySet="Empleado_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Empleado" Association="CarWashModel.Store.FK_Factura_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Roles_Role" Association="CarWashModel.Store.FK_Empleado_Roles_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Empleado_Roles" EntitySet="Empleado_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaDetails_Factura" Association="CarWashModel.Store.FK_FacturaDetails_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="FacturaDetails" EntitySet="FacturaDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaDetails_TipoLavado" Association="CarWashModel.Store.FK_FacturaDetails_TipoLavado">
+      <End Role="TipoLavado" EntitySet="TipoLavado" />
+      <End Role="FacturaDetails" EntitySet="FacturaDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaDetails_Vehiculo" Association="CarWashModel.Store.FK_FacturaDetails_Vehiculo">
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+      <End Role="FacturaDetails" EntitySet="FacturaDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculo_Marca" Association="CarWashModel.Store.FK_Vehiculo_Marca">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculo_Modelo" Association="CarWashModel.Store.FK_Vehiculo_Modelo">
+      <End Role="Modelo" EntitySet="Modelo" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculo_TipoVehiculo" Association="CarWashModel.Store.FK_Vehiculo_TipoVehiculo">
+      <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Apellidos" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Cedula" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="Direccion" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Contacto" Type="varchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Cliente_Vehiculo">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="false" />
+    <Property Name="VehiculoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Apellidos" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Cedula" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="Direccion" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Contacto" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="Usuario" Type="nchar" Nullable="true" MaxLength="100" />
+    <Property Name="Contraseña" Type="varchar" Nullable="false" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Empleado_Roles">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpleadoId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteId" Type="int" Nullable="true" />
+    <Property Name="EmpleadoId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="FacturaDetails">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehiculoId" Type="int" Nullable="true" />
+    <Property Name="Descuento" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Lavado" Type="int" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Cantidad" Type="int" Nullable="true" />
+    <Property Name="ITBIS" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Modelo">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="TipoLavado">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_Lavado" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TipoVehiculo">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Vehiculo">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeloId" Type="int" Nullable="false" />
+    <Property Name="MarcaId" Type="int" Nullable="false" />
+    <Property Name="Placa" Type="varchar" Nullable="true" MaxLength="7" />
+    <Property Name="Tipo_de_Vehiculo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cliente_Vehiculo_Cliente">
+    <End Role="Cliente" Type="CarWashModel.Store.Cliente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cliente_Vehiculo" Type="CarWashModel.Store.Cliente_Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Cliente_Vehiculo">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Cliente">
+    <End Role="Cliente" Type="CarWashModel.Store.Cliente" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Factura" Type="CarWashModel.Store.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Vehiculo_Vehiculo">
+    <End Role="Vehiculo" Type="CarWashModel.Store.Vehiculo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cliente_Vehiculo" Type="CarWashModel.Store.Cliente_Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculo">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Cliente_Vehiculo">
+        <PropertyRef Name="VehiculoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Roles_Empleado">
+    <End Role="Empleado" Type="CarWashModel.Store.Empleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Empleado_Roles" Type="CarWashModel.Store.Empleado_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Empleado_Roles">
+        <PropertyRef Name="EmpleadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Empleado">
+    <End Role="Empleado" Type="CarWashModel.Store.Empleado" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Factura" Type="CarWashModel.Store.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="EmpleadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Roles_Role">
+    <End Role="Role" Type="CarWashModel.Store.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Empleado_Roles" Type="CarWashModel.Store.Empleado_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Empleado_Roles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaDetails_Factura">
+    <End Role="Factura" Type="CarWashModel.Store.Factura" Multiplicity="1" />
+    <End Role="FacturaDetails" Type="CarWashModel.Store.FacturaDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="FacturaDetails">
+        <PropertyRef Name="Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaDetails_TipoLavado">
+    <End Role="TipoLavado" Type="CarWashModel.Store.TipoLavado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FacturaDetails" Type="CarWashModel.Store.FacturaDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoLavado">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="FacturaDetails">
+        <PropertyRef Name="Lavado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaDetails_Vehiculo">
+    <End Role="Vehiculo" Type="CarWashModel.Store.Vehiculo" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FacturaDetails" Type="CarWashModel.Store.FacturaDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculo">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="FacturaDetails">
+        <PropertyRef Name="VehiculoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculo_Marca">
+    <End Role="Marca" Type="CarWashModel.Store.Marca" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Vehiculo" Type="CarWashModel.Store.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="MarcaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculo_Modelo">
+    <End Role="Modelo" Type="CarWashModel.Store.Modelo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Vehiculo" Type="CarWashModel.Store.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modelo">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="ModeloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculo_TipoVehiculo">
+    <End Role="TipoVehiculo" Type="CarWashModel.Store.TipoVehiculo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Vehiculo" Type="CarWashModel.Store.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoVehiculo">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="Tipo_de_Vehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarWashModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -742,149 +737,140 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CarWashModelStoreContainer" CdmEntityContainer="CarWashEntities">
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="CarWashModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cliente_Vehiculo">
-            <EntityTypeMapping TypeName="CarWashModel.Cliente_Vehiculo">
-              <MappingFragment StoreEntitySet="Cliente_Vehiculo">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
-                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Empleado">
-            <EntityTypeMapping TypeName="CarWashModel.Empleado">
-              <MappingFragment StoreEntitySet="Empleado">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Empleado_Roles">
-            <EntityTypeMapping TypeName="CarWashModel.Empleado_Roles">
-              <MappingFragment StoreEntitySet="Empleado_Roles">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Factura">
-            <EntityTypeMapping TypeName="CarWashModel.Factura">
-              <MappingFragment StoreEntitySet="Factura">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
-                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FacturaDetails">
-            <EntityTypeMapping TypeName="CarWashModel.FacturaDetails">
-              <MappingFragment StoreEntitySet="FacturaDetails">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="Lavado" ColumnName="Lavado" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Marca">
-            <EntityTypeMapping TypeName="CarWashModel.Marca">
-              <MappingFragment StoreEntitySet="Marca">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Modelo">
-            <EntityTypeMapping TypeName="CarWashModel.Modelo">
-              <MappingFragment StoreEntitySet="Modelo">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="CarWashModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CarWashModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoLavado">
-            <EntityTypeMapping TypeName="CarWashModel.TipoLavado">
-              <MappingFragment StoreEntitySet="TipoLavado">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion_Lavado" ColumnName="Descripcion Lavado" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoVehiculo">
-            <EntityTypeMapping TypeName="CarWashModel.TipoVehiculo">
-              <MappingFragment StoreEntitySet="TipoVehiculo">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vehiculo">
-            <EntityTypeMapping TypeName="CarWashModel.Vehiculo">
-              <MappingFragment StoreEntitySet="Vehiculo">
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
-                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
-                <ScalarProperty Name="Placa" ColumnName="Placa" />
-                <ScalarProperty Name="Tipo_de_Vehiculo" ColumnName="Tipo de Vehiculo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="UserInRol" FunctionName="CarWashModel.Store.UserInRol">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CarWashModel.UserInRol_Result">
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarWashModelStoreContainer" CdmEntityContainer="CarWashEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Cliente)">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente_Vehiculo">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Cliente_Vehiculo)">
+        <MappingFragment StoreEntitySet="Cliente_Vehiculo">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Empleado)">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado_Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Empleado_Roles)">
+        <MappingFragment StoreEntitySet="Empleado_Roles">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Factura)">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.FacturaDetails)">
+        <MappingFragment StoreEntitySet="FacturaDetails">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Lavado" ColumnName="Lavado" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marca">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Marca)">
+        <MappingFragment StoreEntitySet="Marca">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelo">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Modelo)">
+        <MappingFragment StoreEntitySet="Modelo">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Role)">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.sysdiagrams)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoLavado">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.TipoLavado)">
+        <MappingFragment StoreEntitySet="TipoLavado">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion_Lavado" ColumnName="Descripcion_Lavado" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoVehiculo">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.TipoVehiculo)">
+        <MappingFragment StoreEntitySet="TipoVehiculo">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculo">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Vehiculo)">
+        <MappingFragment StoreEntitySet="Vehiculo">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+          <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+          <ScalarProperty Name="Tipo_de_Vehiculo" ColumnName="Tipo_de_Vehiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -898,7 +884,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

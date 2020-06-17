@@ -233,6 +233,7 @@
       <DependentUpon>CarWashModel.edmx</DependentUpon>
       <LastGenOutput>CarWashModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\CarWashModel.edmx.sql" />
     <Content Include="Models\CarWashModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CarWashModel.edmx</DependentUpon>
