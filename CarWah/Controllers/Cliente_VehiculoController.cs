@@ -27,7 +27,7 @@ namespace CarWah.Controllers
         // GET: Cliente_Vehiculo/Details/5
         public ActionResult Details([Range(1, int.MaxValue)]int id)
         {
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -65,7 +65,7 @@ namespace CarWah.Controllers
         // GET: Cliente_Vehiculo/Edit/5
         public ActionResult Edit([Range(1, int.MaxValue)]int id)
         {
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace CarWah.Controllers
         // GET: Cliente_Vehiculo/Delete/5
         public ActionResult Delete([Range(1, int.MaxValue)]int id)
         {
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace CarWah.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Range(1, int.MaxValue)]int id)
         {
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             db.Cliente_Vehiculo.Remove(cliente_Vehiculo);
             db.SaveChanges();
             return RedirectToAction("Index");
