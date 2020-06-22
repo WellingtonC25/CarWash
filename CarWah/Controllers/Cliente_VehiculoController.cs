@@ -13,7 +13,7 @@ namespace CarWah.Controllers
     public class Cliente_VehiculoController : Controller
     {
         /// <summary>
-        /// 
+        /// A client vehicle controller
         /// </summary>
         private CarWashEntities db = new CarWashEntities();
 
@@ -25,13 +25,9 @@ namespace CarWah.Controllers
         }
 
         // GET: Cliente_Vehiculo/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details([Range(1, int.MaxValue)]int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -67,13 +63,9 @@ namespace CarWah.Controllers
         }
 
         // GET: Cliente_Vehiculo/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit([Range(1, int.MaxValue)]int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -102,13 +94,9 @@ namespace CarWah.Controllers
         }
 
         // GET: Cliente_Vehiculo/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete([Range(1, int.MaxValue)]int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             if (cliente_Vehiculo == null)
             {
                 return HttpNotFound();
@@ -119,9 +107,9 @@ namespace CarWah.Controllers
         // POST: Cliente_Vehiculo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed([Range(1, int.MaxValue)]int id)
         {
-            Cliente_Vehiculo cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
+            var cliente_Vehiculo = db.Cliente_Vehiculo.Find(id);
             db.Cliente_Vehiculo.Remove(cliente_Vehiculo);
             db.SaveChanges();
             return RedirectToAction("Index");
