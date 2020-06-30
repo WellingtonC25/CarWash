@@ -48,7 +48,7 @@ namespace CarWah.Controllers
 
                 if (_empleado.Where(e => e.Contraseña == empleado.Contraseña).Any() && pr.Where(e => e.Descripcion == "User").Any())
                 {
-                    return RedirectToAction("Usuario");
+                    return RedirectToAction("Usuario","Empleados");
                 }
 
                 if (_empleado.Where(e => e.Contraseña == empleado.Contraseña).Any() && pr.Where(e => e.Descripcion == "Customer").Any())
@@ -111,7 +111,6 @@ namespace CarWah.Controllers
                 db.Empleado.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-
             }
             catch (Exception ex )
             {

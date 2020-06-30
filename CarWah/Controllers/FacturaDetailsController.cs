@@ -17,7 +17,7 @@ namespace CarWah.Controllers
         // GET: FacturaDetails
         public ActionResult Index()
         {
-            var facturaDetails = db.FacturaDetails.Include(f => f.Factura).Include(f => f.TipoLavado).Include(f => f.Vehiculo);
+            var facturaDetails = db.FacturaDetail.Include(f => f.Factura).Include(f => f.TipoLavado).Include(f => f.Vehiculo);
             return View(facturaDetails.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace CarWah.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FacturaDetails facturaDetails = db.FacturaDetails.Find(id);
+            FacturaDetail facturaDetails = db.FacturaDetail.Find(id);
             if (facturaDetails == null)
             {
                 return HttpNotFound();
@@ -51,11 +51,11 @@ namespace CarWah.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Codigo,VehiculoId,Descuento,Lavado,Precio,Cantidad,ITBIS,Total")] FacturaDetails facturaDetails)
+        public ActionResult Create([Bind(Include = "Codigo,VehiculoId,Descuento,Lavado,Precio,Cantidad,ITBIS,Total")] FacturaDetail facturaDetails)
         {
             if (ModelState.IsValid)
             {
-                db.FacturaDetails.Add(facturaDetails);
+                db.FacturaDetail.Add(facturaDetails);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -74,7 +74,7 @@ namespace CarWah.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FacturaDetails facturaDetails = db.FacturaDetails.Find(id);
+            FacturaDetail facturaDetails = db.FacturaDetail.Find(id);
             if (facturaDetails == null)
             {
                 return HttpNotFound();
@@ -90,7 +90,7 @@ namespace CarWah.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Codigo,VehiculoId,Descuento,Lavado,Precio,Cantidad,ITBIS,Total")] FacturaDetails facturaDetails)
+        public ActionResult Edit([Bind(Include = "Codigo,VehiculoId,Descuento,Lavado,Precio,Cantidad,ITBIS,Total")] FacturaDetail facturaDetails)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +111,7 @@ namespace CarWah.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FacturaDetails facturaDetails = db.FacturaDetails.Find(id);
+            FacturaDetail facturaDetails = db.FacturaDetail.Find(id);
             if (facturaDetails == null)
             {
                 return HttpNotFound();
@@ -124,8 +124,8 @@ namespace CarWah.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FacturaDetails facturaDetails = db.FacturaDetails.Find(id);
-            db.FacturaDetails.Remove(facturaDetails);
+            FacturaDetail facturaDetails = db.FacturaDetail.Find(id);
+            db.FacturaDetail.Remove(facturaDetails);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

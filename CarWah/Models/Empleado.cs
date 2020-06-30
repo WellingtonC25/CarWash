@@ -18,7 +18,7 @@ namespace CarWah.Models
         public Empleado()
         {
             this.Empleado_Roles = new HashSet<Empleado_Roles>();
-            this.Factura = new HashSet<Factura>();
+            this.Facturas = new HashSet<Factura>();
         }
     
         public int Codigo { get; set; }
@@ -33,6 +33,6 @@ namespace CarWah.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado_Roles> Empleado_Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Factura> Factura { get; set; }
+        public virtual ICollection<Factura> Facturas { get; set; }
     }
 }

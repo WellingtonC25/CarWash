@@ -17,7 +17,7 @@ namespace CarWah.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoLavado()
         {
-            this.FacturaDetails = new HashSet<FacturaDetails>();
+            this.FacturaDetails = new HashSet<FacturaDetail>();
         }
     
         public int Codigo { get; set; }
@@ -25,6 +25,6 @@ namespace CarWah.Models
         public Nullable<decimal> Precio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FacturaDetails> FacturaDetails { get; set; }
+        public virtual ICollection<FacturaDetail> FacturaDetails { get; set; }
     }
 }

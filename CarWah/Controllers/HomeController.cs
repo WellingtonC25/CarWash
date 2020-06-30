@@ -14,7 +14,8 @@ namespace CarWah.Controllers
       
         public ActionResult Index()
         {
-            
+            List<Empleado> empleados = new List<Empleado>();
+            ViewBag.Empleado = empleados.Count();
             return View();
         }
 

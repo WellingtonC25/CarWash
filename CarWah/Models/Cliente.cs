@@ -18,7 +18,7 @@ namespace CarWah.Models
         public Cliente()
         {
             this.Cliente_Vehiculo = new HashSet<Cliente_Vehiculo>();
-            this.Factura = new HashSet<Factura>();
+            this.Facturas = new HashSet<Factura>();
         }
     
         public int Codigo { get; set; }
@@ -31,6 +31,6 @@ namespace CarWah.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente_Vehiculo> Cliente_Vehiculo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Factura> Factura { get; set; }
+        public virtual ICollection<Factura> Facturas { get; set; }
     }
 }

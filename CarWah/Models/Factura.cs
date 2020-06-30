@@ -20,6 +20,6 @@ namespace CarWah.Models
     
         public virtual Cliente Cliente { get; set; }
         public virtual Empleado Empleado { get; set; }
-        public virtual FacturaDetails FacturaDetails { get; set; }
+        public virtual FacturaDetail FacturaDetail { get; set; }
     }
 }

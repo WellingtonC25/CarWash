@@ -4,12 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+@{
+    Layout = "~/Views/Shared/_UserRole.cshtml";
+}
+
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-success" })
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Descripcion_Lavado)
@@ -20,20 +24,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion_Lavado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion_Lavado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.Codigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Codigo }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -4,30 +4,37 @@
     ViewBag.Title = "Details";
 }
 
+}@{
+    Layout = "~/Views/Shared/_UserRole.cshtml";
+}
+
 <h2>Details</h2>
+<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+    <div>
+        <h4>TipoLavado</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion_Lavado)
+            </dt>
 
-<div>
-    <h4>TipoLavado</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion_Lavado)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion_Lavado)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion_Lavado)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Precio)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
 </div>
+    
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo }) |
     @Html.ActionLink("Back to List", "Index")
