@@ -219,6 +219,9 @@
   <ItemGroup>
     <Content Include="Content\Elite\css\custom.css" />
     <Content Include="Content\Elite\css\custom.min.css" />
+    <Content Include="Content\Elite\css\login.css" />
+    <Content Include="Content\Elite\css\main.css" />
+    <Content Include="Content\Elite\css\util.css" />
     <Content Include="Content\Elite\images\back_disabled.png" />
     <Content Include="Content\Elite\images\back_enabled.png" />
     <Content Include="Content\Elite\images\back_enabled_hover.png" />
@@ -230,6 +233,8 @@
     <Content Include="Content\Elite\index.html" />
     <Content Include="Content\Elite\js\custom.js" />
     <Content Include="Content\Elite\js\custom.min.js" />
+    <Content Include="Content\Elite\js\main.js" />
+    <Content Include="Content\Elite\js\map-custom.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\car.jpg" />
     <Content Include="fonts\carw.jpg" />

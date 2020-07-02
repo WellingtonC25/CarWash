@@ -1,33 +1,37 @@
 ﻿@model CarWah.Models.Marca
-@{
-    Layout = null;
-}
 
 @{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
 
-<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-    <h4>Marca</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+<h2>Detalle de Marca</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+<div class="login">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+        <h4><i class="fa fa-circle-o"></i>  Marca</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+
+        </dl>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Ir a la lista", "Index")
+        </p>
+    </div>
+  
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

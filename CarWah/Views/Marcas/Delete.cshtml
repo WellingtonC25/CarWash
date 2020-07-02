@@ -4,37 +4,43 @@
 }
 
 @{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
+
 
 <h3>Esta seguro de eliminar este articulo?</h3>
-<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-    <h4>Marca</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+<div class="login">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+        <h4><i class="fa fa-circle-o"></i>  Marca</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-danger" /> |
+                @Html.ActionLink("Ir a la lista", "Index")
+            </div>
+        }
+    </div>
 </div>

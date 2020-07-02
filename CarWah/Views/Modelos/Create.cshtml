@@ -1,28 +1,31 @@
 ﻿@model CarWah.Models.Modelo
-@{
-    Layout = null;
-}
 
 @{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
+
+<h2>Nuevo Modelo</h2>
+
+<div class="login">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Modelo</h4>
+            <h4><i class="fa fa-dot-circle-o"></i>  Modelo</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Descripcion, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
@@ -31,12 +34,15 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-outline-info" />
                 </div>
             </div>
+
+            <div>
+                @Html.ActionLink("Ir a la lista", "Index")
+            </div>
         </div>
-    }
-</div>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+        }
     </div>
+
+</div>

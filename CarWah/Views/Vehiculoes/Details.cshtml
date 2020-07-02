@@ -5,51 +5,58 @@
 }
 
 @{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-    <div>
-        <h4>Vehiculo</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Placa)
-            </dt>
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
 
-            <dd>
-                @Html.DisplayFor(model => model.Placa)
-            </dd>
+<h2>Detalle de Vehiculo</h2>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Marca.Descripcion)
-            </dt>
+<div class="login">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+        <div>
+            <h4><i class="fa fa-car"></i>  Datos del Vehiculo </h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Placa)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Marca.Descripcion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Placa)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Modelo.Descripcion)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Modelo.Descripcion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Marca.Descripcion)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TipoVehiculo.Descripcion)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Modelo)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.TipoVehiculo.Descripcion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Modelo.Descripcion)
+                </dd>
 
-        </dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TipoVehiculo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipoVehiculo.Descripcion)
+                </dd>
+            </dl>
+            <p>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo }, new {@class = "btn btn-info"}) |
+                @Html.ActionLink("Ir a la lista", "Index")
+            </p>
+        </div>
     </div>
- </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+</div>
+

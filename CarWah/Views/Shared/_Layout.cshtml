@@ -63,10 +63,31 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Vehiculo <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-car"></i> Vehiculo <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a @Html.ActionLink("Crear","Create", "Vehiculoes" )></a></li>
-                                        <li><a @Html.ActionLink("Listado","Index", "Vehiculoes" )></a></li>
+                                        <li>@Html.ActionLink("Crear", "Create", "Vehiculoes")</li>
+                                        <li>@Html.ActionLink("Listado", "Index", "Vehiculoes")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-circle-o"></i> Marca <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Crear", "Create", "Marcas")</li>
+                                        <li>@Html.ActionLink("Listado", "Index", "Marcas")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-dot-circle-o"></i> Modelo <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Crear", "Create", "Modelos")</li>
+                                        <li>@Html.ActionLink("Listado", "Index", "Modelos")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-truck"></i> Tipo de Vehiculo <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Crear", "Create", "TipoVehiculos")</li>
+                                        <li>@Html.ActionLink("Listado", "Index", "TipoVehiculos")</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -286,8 +307,7 @@
             <!--This is a Top Navigation-->
             <!-- page content -->
             <div class="right_col" role="main">
-                @RenderBody();
-
+                @RenderBody()
             </div>
             <!-- page content -->
             <!-- footer content -->

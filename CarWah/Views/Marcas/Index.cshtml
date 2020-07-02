@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<CarWah.Models.Marca>
 
 @{
-    Layout = null;
-}
-
-@{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
 
+<h2>Listado de Marcas</h2>
+<br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-success" })
+    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped">
     <tr>
@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
                 @Html.ActionLink("Detalle", "Details", new { id = item.Codigo }, new { @class = "btn btn-warning" }) |
                 @Html.ActionLink("Borrar", "Delete", new { id = item.Codigo }, new { @class = "btn btn-danger" })
             </td>

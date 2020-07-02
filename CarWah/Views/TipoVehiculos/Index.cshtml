@@ -5,15 +5,20 @@
 }
 
 @{
-    Layout = "~/Views/Shared/_UserRole.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<link href="~/Content/Elite/css/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet" />
 
+<h2>Lista de los Tipos de Vehiculos</h2>
+
+<br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-success" })
+    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
@@ -28,9 +33,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Codigo }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Codigo })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.Codigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Codigo }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

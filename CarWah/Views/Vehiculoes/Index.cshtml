@@ -7,10 +7,10 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
+<h2>Listado de Vehiculos</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-success" })
+    @Html.ActionLink("Crear Nuevo", "Create", "Empleados", new { @class = "btn btn-primary" })
 </p>
 <table class="table table-striped">
     <tr>
@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.Placa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Marca.Descripcion)
+            @Html.DisplayNameFor(model => model.Marca)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Modelo.Descripcion)
+            @Html.DisplayNameFor(model => model.Modelo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoVehiculo.Descripcion)
+            @Html.DisplayNameFor(model => model.TipoVehiculo)
         </th>
         <th></th>
     </tr>
@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.TipoVehiculo.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.Codigo }, new { @class = "btn btn-info" }) |
                 @Html.ActionLink("Detalle", "Details", new { id = item.Codigo }, new { @class = "btn btn-warning" }) |
                 @Html.ActionLink("Borrar", "Delete", new { id = item.Codigo }, new { @class = "btn btn-danger" })
             </td>

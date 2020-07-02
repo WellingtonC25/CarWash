@@ -4,57 +4,63 @@
 
 @model CarWah.Models.Empleado
 
+<meta name="viewport" content="width=device-width, user-scalable=no,
+initial-scale=1.0, maximum-scale=1.0">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<link href="~/Content/main.css" rel="stylesheet" />
-<link href="~/Content/util.css" rel="stylesheet" />
+<link href="~/Content/Elite/css/main.css" rel="stylesheet"/>
+<link href="~/Content/Elite/css/util.css" rel="stylesheet"/>
+<link href="~/Content/Elite/css/login.css" rel="stylesheet" />
 
+<div class="login">
     <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-            @using (Html.BeginForm("Login", "Empleados", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class ="login100-form validate-form", role = "form" }))
-            {
-                <span class="login100-form-title p-b-33">
-                    Cuenta Login
+        @using (Html.BeginForm("Login", "Empleados", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login100-form validate-form", role = "form" }))
+        {
+            <span class="login100-form-title p-b-33">
+                Cuenta Login
+            </span>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="wrap-input100 validate-input">
+                @Html.TextBoxFor(e => e.Usuario, new { @class = "input100", placeholder = "Usuario" })
+                @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+            </div>
+
+            <div class="wrap-input100 rs1 validate-input">
+                @Html.PasswordFor(e => e.Contraseña, new { @class = "input100", placeholder = "Contraseña" })
+                @Html.ValidationMessageFor(m => m.Contraseña, "", new { @class = "text-danger" })
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+            </div>
+
+            <div class="container-login100-form-btn m-t-20">
+                <div class="login100-form-btn">
+                    <input type="submit" value="Log in" class="btn btn-default" />
+                </div>
+            </div>
+
+            <div class="text-center p-t-45 p-b-4">
+                <span class="txt1">
+                    Olvido su contraseña
                 </span>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="wrap-input100 validate-input">
-                    @Html.TextBoxFor(e => e.Usuario, new { @class = "input100", placeholder = "Usuario" })
-                    @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
-                    <span class="focus-input100-1"></span>
-                    <span class="focus-input100-2"></span>
-                </div>
+                <a href="#" class="txt2 hov1">
+                    Usuario/Contraseña
+                </a>
+            </div>
 
-                <div class="wrap-input100 rs1 validate-input">
-                    @Html.PasswordFor(e => e.Contraseña, new { @class = "input100", placeholder = "Contraseña" })
-                    @Html.ValidationMessageFor(m => m.Contraseña, "", new { @class = "text-danger" })
-                    <span class="focus-input100-1"></span>
-                    <span class="focus-input100-2"></span>
-                </div>
+            <div class="text-center">
+                <span class="txt1">
+                    Crear un usuario
+                </span>
 
-                <div class="container-login100-form-btn m-t-20">
-                    <div class="login100-form-btn">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-
-                <div class="text-center p-t-45 p-b-4">
-                    <span class="txt1">
-                        Olvido su contraseña
-                    </span>
-
-                    <a href="#" class="txt2 hov1">
-                        Usuario/Contraseña
-                    </a>
-                </div>
-
-                <div class="text-center">
-                    <span class="txt1">
-                        Crear un usuario
-                    </span>
-
-                    <a href="#" class="txt2 hov1">
-                        Crear
-                    </a>
-                </div>
-            }
+                <a href="#" class="txt2 hov1">
+                    Crear
+                </a>
+            </div>
+        }
     </div>
+</div>
